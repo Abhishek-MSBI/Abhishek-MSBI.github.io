@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications | Abhishek S R</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --border-color: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 1rem 0;
+            background-color: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .section {
+            padding: 8rem 0 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .certification-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .certification-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .certification-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+             .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="nav-logo">&lt;Abhishek S R /&gt;</a>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="certifications.html">Certifications</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section" id="certifications">
+            <div class="container">
+                <h2 class="section-title">Professional Certifications</h2>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <img src="Images/Comaprative design research and methods.png" alt="Comparative Research Designs and Methods">
+                        <h3>Comparative Research Designs and Methods</h3>
+                        <p>Università di Napoli Federico II</p>
+                    </div>
+                    <div class="certification-card">
+                        <img src="Images/DNA Decoded.png" alt="DNA Decoded">
+                        <h3>DNA Decoded</h3>
+                        <p>McMaster University</p>
+                    </div>
+                    <div class="certification-card">
+                        <img src="Images/Precision medicine.png" alt="Precision Medicine">
+                        <h3>Precision Medicine</h3>
+                        <p>University of Geneva</p>
+                    </div>
+                    <div class="certification-card">
+                        <img src="Images/Finding mutations BI6.png" alt="Finding Mutations in DNA and Proteins">
+                        <h3>Finding Mutations in DNA and Proteins (Bioinformatics VI)</h3>
+                        <p>University of California, San Diego</p>
+                    </div>
+                    <div class="certification-card">
+                        <img src="Images/Shell Scripting.png" alt="Linux Commands and Shell Scripting">
+                        <h3>Hands-on Introduction to Linux Commands and Shell Scripting</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="certification-card">
+                        <img src="Images/Gen AI.jpg" alt="Generative AI Models">
+                        <h3>Build your Own Generative AI Models</h3>
+                        <p>Nextwave</p>
+                    </div>
+                     <div class="certification-card">
+                        <img src="Images/Duke.png" alt="Introduction to Genetics and Evolution">
+                        <h3>Introduction to Genetics and Evolution</h3>
+                        <p>Duke University</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Abhishek S R. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
