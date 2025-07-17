@@ -264,91 +264,6 @@
         .project-links i {
             margin-right: 0.5rem;
         }
-
-        /* Certifications Carousel */
-        .carousel-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .carousel {
-            display: flex;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-        
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .certification-card {
-            min-width: 100%;
-            padding: 2rem;
-            text-align: center;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-        }
-        
-        .certification-card img {
-            max-width: 250px;
-            height: auto;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .certification-card h3 {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent;
-            border: 2px solid var(--text-secondary);
-            color: var(--text-secondary);
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-        
-        .carousel-button:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .carousel-button.prev { left: -70px; }
-        .carousel-button.next { right: -70px; }
-        
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 2rem;
-        }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--border-color);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .dot.active {
-            background-color: var(--accent);
-        }
         
         .contact-content {
             text-align: center;
@@ -412,8 +327,6 @@
             .nav-links {
                 display: none;
             }
-            .carousel-button.prev { left: 0px; }
-            .carousel-button.next { right: 0px; }
         }
     </style>
 </head>
@@ -423,12 +336,12 @@
 
     <nav>
         <div class="container nav-content">
-            <a href="#" class="nav-logo">&lt;Abhishek S R /&gt;</a>
+            <a href="index.html" class="nav-logo">&lt;Abhishek S R /&gt;</a>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="certifications.html">Certifications</a>
+                <a href="index.html#contact">Contact</a>
             </div>
         </div>
     </nav>
@@ -482,56 +395,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="section" id="certifications">
-            <div class="container">
-                <h2 class="section-title">Professional Certifications</h2>
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="certification-card">
-                                <img src="Images/Comaprative design research and methods.png" alt="Certification 1">
-                                <h3>Comparative Research Designs and Methods</h3>
-                                <p>Università di Napoli Federico II</p>
-                            </div>
-                            <div class="certification-card">
-                                <img src="Images/DNA Decoded.png" alt="Certification 2">
-                                <h3>DNA Decoded</h3>
-                                <p>McMaster University</p>
-                            </div>
-                            <div class="certification-card">
-                                <img src="Images/Precision medicine.png" alt="Certification 3">
-                                <h3>Precision Medicine</h3>
-                                <p>University of Geneva</p>
-                            </div>
-                            <div class="certification-card">
-                                <img src="Images/Finding mutations BI6.png" alt="Certification 4">
-                                <h3>Finding Mutations in DNA and Proteins</h3>
-                                <p>University of California, San Diego</p>
-                            </div>
-                            <div class="certification-card">
-                                <img src="Images/Shell Scripting.png" alt="Certification 5">
-                                <h3>Introduction to Linux Commands & Shell Scripting</h3>
-                                <p>IBM</p>
-                            </div>
-                            <div class="certification-card">
-                                <img src="Images/Gen AI.jpg" alt="Certification 6">
-                                <h3>Build your Own Generative AI Models</h3>
-                                <p>Nextwave</p>
-                            </div>
-                            <div class="certification-card">
-                                <img src="Images/Duke.png" alt="Certification 7">
-                                <h3>Introduction to Genetics and Evolution</h3>
-                                <p>Duke University</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-button prev" title="Previous certification"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-button next" title="Next certification"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="carousel-dots"></div>
-            </div>
-        </section>
         
         <section class="section" id="contact">
             <div class="container contact-content">
@@ -574,52 +437,6 @@
                 }
             },
             "retina_detect": true
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const carouselInner = document.querySelector('.carousel-inner');
-            if (!carouselInner) return;
-            const cards = document.querySelectorAll('.certification-card');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-            const dotsContainer = document.querySelector('.carousel-dots');
-            
-            let currentIndex = 0;
-            const totalCards = cards.length;
-
-            for (let i = 0; i < totalCards; i++) {
-                const dot = document.createElement('span');
-                dot.classList.add('dot');
-                dot.addEventListener('click', () => {
-                    currentIndex = i;
-                    updateCarousel();
-                });
-                dotsContainer.appendChild(dot);
-            }
-            const dots = dotsContainer.querySelectorAll('.dot');
-
-            function updateCarousel() {
-                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-            }
-
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-                updateCarousel();
-            });
-
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalCards;
-                updateCarousel();
-            });
-            
-            setInterval(() => {
-                nextBtn.click();
-            }, 5000);
-            
-            updateCarousel();
         });
     </script>
 </body>
