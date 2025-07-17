@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bioinformatics Portfolio</title>
+    <title>Abhishek S R | Bioinformatics Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --accent: #64ffda;
-            --border-color: #2a2a2a;
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --border-color: #30363d;
         }
 
         * {
@@ -31,11 +31,18 @@
         body {
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -43,8 +50,8 @@
         nav {
             position: fixed;
             width: 100%;
-            padding: 1.5rem 0;
-            background-color: rgba(10, 10, 10, 0.85);
+            padding: 1rem 0;
+            background-color: rgba(13, 17, 23, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
@@ -60,6 +67,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
+            text-decoration: none;
         }
 
         .nav-links {
@@ -72,10 +80,26 @@
             text-decoration: none;
             font-size: 1rem;
             transition: color 0.3s;
+            position: relative;
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
         .nav-links a:hover {
             color: var(--accent);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .hero {
@@ -93,69 +117,81 @@
         }
 
         .hero-text h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
-        .hero-text h1 span {
+        .hero-text h1 .name {
             color: var(--accent);
+            font-size: 4rem;
         }
 
         .hero-text .subtitle {
             font-size: 1.2rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            font-family: 'Roboto Mono', monospace;
         }
         
         .hero-text p {
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
         }
-
-        .hero-text ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .hero-text ul li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
+        
+        .hero-text .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .hero-text ul li::before {
-            content: '>';
-            color: var(--accent);
-            position: absolute;
-            left: 0;
+        .hero-text .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(88, 166, 255, 0.2);
         }
 
         .profile-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative;
         }
-
+        
         .profile-image {
-            width: 300px;
-            height: 300px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--accent);
-            box-shadow: 0 0 20px var(--accent);
+            border: 4px solid var(--border-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-image-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(45deg, var(--accent), #ff7b72);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(15px);
+            opacity: 0.6;
         }
 
         .section {
             padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
         
-        .section-bg {
-            background-color: var(--bg-secondary);
+        .section:last-of-type {
+            border-bottom: none;
         }
-
+        
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -181,27 +217,31 @@
         }
 
         .project-card {
-            background-color: var(--bg-primary);
-            border-radius: 1rem;
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
             padding: 2rem;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: var(--accent);
         }
 
         .project-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--accent);
+            color: var(--text-primary);
         }
 
         .project-card p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .project-links {
@@ -211,34 +251,46 @@
         }
 
         .project-links a {
-            color: var(--accent);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 1rem;
             transition: color 0.3s;
         }
 
         .project-links a:hover {
-            color: var(--text-primary);
+            color: var(--accent);
         }
 
+        .project-links i {
+            margin-right: 0.5rem;
+        }
+
+        /* Certifications Carousel */
         .carousel-container {
             max-width: 900px;
             margin: 0 auto;
             position: relative;
-            overflow: hidden;
         }
-
+        
         .carousel {
+            display: flex;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
         }
-
+        
         .certification-card {
             min-width: 100%;
             padding: 2rem;
             text-align: center;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
         }
-
+        
         .certification-card img {
             max-width: 250px;
             height: auto;
@@ -247,61 +299,58 @@
         }
 
         .certification-card h3 {
-            color: var(--accent);
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
-        }
-
-        .certification-card p {
-            color: var(--text-secondary);
-            margin-bottom: 0.2rem;
         }
         
         .carousel-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: var(--accent);
-            border: none;
-            color: var(--bg-primary);
-            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--text-secondary);
+            color: var(--text-secondary);
+            width: 50px;
+            height: 50px;
             cursor: pointer;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
             z-index: 10;
         }
-
-        .carousel-button.prev { left: -20px; }
-        .carousel-button.next { right: -20px; }
-
-        .carousel-button:hover { opacity: 0.8; }
+        
+        .carousel-button:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-button.prev { left: -70px; }
+        .carousel-button.next { right: -70px; }
         
         .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             margin-top: 2rem;
         }
-
+        
         .dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: var(--text-secondary);
+            background-color: var(--border-color);
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
         }
 
         .dot.active {
             background-color: var(--accent);
-            transform: scale(1.2);
         }
         
         .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
             text-align: center;
         }
         
@@ -309,6 +358,9 @@
             font-size: 1.2rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .social-links {
@@ -319,7 +371,7 @@
         }
 
         .social-links a {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             font-size: 2.5rem;
             transition: color 0.3s, transform 0.3s;
         }
@@ -327,6 +379,13 @@
         .social-links a:hover {
             color: var(--accent);
             transform: translateY(-5px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         @media (max-width: 992px) {
@@ -344,24 +403,27 @@
                 font-size: 3rem;
             }
             
-            .hero-text ul {
-                text-align: left;
-                display: inline-block;
+            .hero-text h1 .name {
+                font-size: 3.5rem;
             }
         }
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Or implement a mobile menu */
+                display: none;
             }
+            .carousel-button.prev { left: 0px; }
+            .carousel-button.next { right: 0px; }
         }
-
     </style>
 </head>
 <body>
+
+    <div id="particles-js"></div>
+
     <nav>
         <div class="container nav-content">
-            <a href="#" class="nav-logo">Abhishek S R</a>
+            <a href="#" class="nav-logo">&lt;Abhishek S R /&gt;</a>
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
@@ -371,143 +433,160 @@
         </div>
     </nav>
     
-    <section class="hero" id="about">
+    <header class="hero" id="about">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Hi, I'm <span>ABHISHEK S R</span></h1>
+                <h1>Hi, I'm <br><span class="name">ABHISHEK S R</span></h1>
                 <p class="subtitle">M.Sc. Bioinformatics Student | Computational Genomics Specialist</p>
-                <p>Welcome to my digital portfolio. I'm a Master's student in Bioinformatics combining computational expertise with a passion for genomics and precision medicine. My work focuses on developing innovative solutions to complex biological problems through code, data analysis, and machine learning.</p>
-                <p><strong>What I Do</strong></p>
-                <p>I specialize in computational approaches to biological data analysis, with particular emphasis on:</p>
-                <ul>
-                    <li>Building analysis pipelines for next-generation sequencing data</li>
-                    <li>Developing machine learning models for biomarker discovery</li>
-                    <li>Creating interactive visualizations for complex genomic datasets</li>
-                    <li>Implementing statistical methods for multi-omics integration</li>
-                </ul>
+                <p>Welcome to my portfolio. I merge computational expertise with a passion for genomics and precision medicine, focusing on developing innovative solutions to complex biological problems.</p>
+                <a href="#projects" class="cta-button">View My Work</a>
             </div>
             <div class="profile-image-container">
+                <div class="profile-image-bg"></div>
                 <img src="Images/dp.jpeg" alt="Profile Picture" class="profile-image">
             </div>
         </div>
-    </section>
+    </header>
 
-    <section class="section section-bg" id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>GENTIS: Graph-Enhanced Neural Transformer for Integrative Sequence Analysis</h3>
-                    <p>Revolutionizing Biomarker Detection with AI. Advanced whole genome analysis powered by cutting-edge artificial intelligence.</p>
-                    <div class="project-links">
-                        <a href="https://abhishek-msbi.github.io/ANX.io/" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Project</a>
-                        <a href="https://github.com/Abhishek-MSBI/GENTIS-Graph-Enhanced-Neural-Transformer-for-Integrative-Sequence-Analysis" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+    <main>
+        <section class="section" id="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>GENTIS: Graph-Enhanced Neural Transformer</h3>
+                        <p>Revolutionizing Biomarker Detection with AI. Advanced whole genome analysis powered by cutting-edge artificial intelligence for integrative sequence analysis.</p>
+                        <div class="project-links">
+                            <a href="https://abhishek-msbi.github.io/ANX.io/" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Project</a>
+                            <a href="https://github.com/Abhishek-MSBI/GENTIS-Graph-Enhanced-Neural-Transformer-for-Integrative-Sequence-Analysis" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>Pathogen Evolution Explorer</h3>
-                    <p>A web-based application for analyzing pathogen genomic sequences and exploring their evolutionary relationships. Built with Streamlit and Biopython.</p>
-                    <div class="project-links">
-                        <a href="https://huggingface.co/spaces/srabhishek/Pathogenevolutionexplorer?logs=container" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Project</a>
-                        <a href="https://github.com/Abhishek-MSBI/pathogen-evolution-explorer" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                    
+                    <div class="project-card">
+                        <h3>Pathogen Evolution Explorer</h3>
+                        <p>A web-based application for analyzing pathogen genomic sequences and exploring their evolutionary relationships. Built with Streamlit and Biopython.</p>
+                        <div class="project-links">
+                            <a href="https://huggingface.co/spaces/srabhishek/Pathogenevolutionexplorer?logs=container" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Project</a>
+                            <a href="https://github.com/Abhishek-MSBI/pathogen-evolution-explorer" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>Project 3</h3>
-                    <p>Description of your third bioinformatics project. Include technologies used and key achievements.</p>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> View Project</a>
-                        <a href="https://github.com/Abhishek-MSBI/pathogen-evolution-explorer"><i class="fab fa-github"></i> GitHub</a>
+                    
+                    <div class="project-card">
+                        <h3>Project 3 Title</h3>
+                        <p>A brief and impactful description of your third bioinformatics project. Mention key technologies and your main achievements.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> View Project</a>
+                            <a href="https://github.com/Abhishek-MSBI/pathogen-evolution-explorer"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="certifications">
-        <div class="container">
-            <h2 class="section-title">Professional Certifications</h2>
-            <div class="carousel-container">
-                <div class="carousel">
-                    <div class="certification-card">
-                        <img src="Images/Comaprative design research and methods.png" alt="Certification 1">
-                        <h3>Comparative Research Designs and Methods</h3>
-                        <p>Università di Napoli Federico II</p>
-                        <p>Date: December 2024</p>
+        <section class="section" id="certifications">
+            <div class="container">
+                <h2 class="section-title">Professional Certifications</h2>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-inner">
+                            <div class="certification-card">
+                                <img src="Images/Comaprative design research and methods.png" alt="Certification 1">
+                                <h3>Comparative Research Designs and Methods</h3>
+                                <p>Università di Napoli Federico II</p>
+                            </div>
+                            <div class="certification-card">
+                                <img src="Images/DNA Decoded.png" alt="Certification 2">
+                                <h3>DNA Decoded</h3>
+                                <p>McMaster University</p>
+                            </div>
+                            <div class="certification-card">
+                                <img src="Images/Precision medicine.png" alt="Certification 3">
+                                <h3>Precision Medicine</h3>
+                                <p>University of Geneva</p>
+                            </div>
+                            <div class="certification-card">
+                                <img src="Images/Finding mutations BI6.png" alt="Certification 4">
+                                <h3>Finding Mutations in DNA and Proteins</h3>
+                                <p>University of California, San Diego</p>
+                            </div>
+                            <div class="certification-card">
+                                <img src="Images/Shell Scripting.png" alt="Certification 5">
+                                <h3>Introduction to Linux Commands & Shell Scripting</h3>
+                                <p>IBM</p>
+                            </div>
+                            <div class="certification-card">
+                                <img src="Images/Gen AI.jpg" alt="Certification 6">
+                                <h3>Build your Own Generative AI Models</h3>
+                                <p>Nextwave</p>
+                            </div>
+                            <div class="certification-card">
+                                <img src="Images/Duke.png" alt="Certification 7">
+                                <h3>Introduction to Genetics and Evolution</h3>
+                                <p>Duke University</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="certification-card">
-                        <img src="Images/DNA Decoded.png" alt="Certification 2">
-                        <h3>DNA Decoded</h3>
-                        <p>McMaster University</p>
-                        <p>Date: December 2024</p>
-                    </div>
-                    <div class="certification-card">
-                        <img src="Images/Precision medicine.png" alt="Certification 3">
-                        <h3>Precision Medicine</h3>
-                        <p>University of Geneva</p>
-                        <p>Date: December 2024</p>
-                    </div>
-                    <div class="certification-card">
-                        <img src="Images/Finding mutations BI6.png" alt="Certification 4">
-                        <h3>Finding Mutations in DNA and Proteins (Bioinformatics VI)</h3>
-                        <p>University of California, San Diego</p>
-                        <p>Date: January 2025</p>
-                    </div>
-                    <div class="certification-card">
-                        <img src="Images/Shell Scripting.png" alt="Certification 5">
-                        <h3>Hands-on Introduction to Linux Commands and Shell Scripting</h3>
-                        <p>IBM</p>
-                        <p>Date: December 2024</p>
-                    </div>
-                    <div class="certification-card">
-                        <img src="Images/Gen AI.jpg" alt="Certification 6">
-                        <h3>Build your Own Generative AI Models</h3>
-                        <p>Nextwave</p>
-                        <p>Date: December 2024</p>
-                    </div>
-                    <div class="certification-card">
-                        <img src="Images/Duke.png" alt="Certification 7">
-                        <h3>Introduction to Genetics and Evolution</h3>
-                        <p>Duke University</p>
-                        <p>Date: January 2025</p>
-                    </div>
+                    <button class="carousel-button prev" title="Previous certification"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-button next" title="Next certification"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <button class="carousel-button prev" title="Previous certification"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-button next" title="Next certification"><i class="fas fa-chevron-right"></i></button>
                 <div class="carousel-dots"></div>
             </div>
-        </div>
-    </section>
-    
-    <section class="section section-bg" id="contact">
-        <div class="container contact-content">
-            <h2 class="section-title">Get in Touch</h2>
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out!</p>
-            <div class="social-links">
-                <a href="https://wa.me/+917022240930" title="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://linkedin.com/in/abhishek-s-r-8b3a111a6" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Abhirathod0007" title="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-                <a href="mailto:abhirathod2512@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </section>
+        
+        <section class="section" id="contact">
+            <div class="container contact-content">
+                <h2 class="section-title">Get in Touch</h2>
+                <p>I'm actively seeking new opportunities and collaborations. Feel free to reach out if you have a project in mind or just want to connect.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/+917022240930" title="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://linkedin.com/in/abhishek-s-r-8b3a111a6" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Abhirathod0007" title="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                    <a href="mailto:abhirathod2512@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Abhishek S R. All Rights Reserved.</p>
         </div>
-    </section>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#8b949e", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.querySelector('.carousel');
+            const carouselInner = document.querySelector('.carousel-inner');
+            if (!carouselInner) return;
             const cards = document.querySelectorAll('.certification-card');
             const prevBtn = document.querySelector('.prev');
             const nextBtn = document.querySelector('.next');
             const dotsContainer = document.querySelector('.carousel-dots');
             
-            if (!carousel) return;
-
             let currentIndex = 0;
             const totalCards = cards.length;
 
-            // Create dots
             for (let i = 0; i < totalCards; i++) {
                 const dot = document.createElement('span');
                 dot.classList.add('dot');
@@ -517,10 +596,10 @@
                 });
                 dotsContainer.appendChild(dot);
             }
-            const dots = document.querySelectorAll('.dot');
+            const dots = dotsContainer.querySelectorAll('.dot');
 
             function updateCarousel() {
-                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
@@ -535,14 +614,12 @@
                 currentIndex = (currentIndex + 1) % totalCards;
                 updateCarousel();
             });
-
-            // Auto-slide every 5 seconds
+            
             setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalCards;
-                updateCarousel();
+                nextBtn.click();
             }, 5000);
             
-            updateCarousel(); // Initial call
+            updateCarousel();
         });
     </script>
 </body>
