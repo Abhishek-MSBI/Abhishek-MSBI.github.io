@@ -7,7 +7,59 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+/* Add these new styles for the updated hero section */
+.hero-text .specializations {
+    list-style: none;
+    padding: 0;
+    margin: -1.5rem 0 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem; /* Vertical and horizontal gap */
+}
 
+.hero-text .specializations li {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.hero-text .specializations li::before {
+    content: '◈';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+}
+
+.hero-text .description {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary); /* Make it stand out a bit more */
+}
+
+.hero-text .skills-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.hero-text .skills-list li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+.hero-text .skills-list li::before {
+    content: '>';
+    font-family: 'Roboto Mono', monospace;
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 1.2rem;
+}
         :root {
             --bg-primary: #0d1117;
             --bg-secondary: #161b22;
@@ -348,19 +400,26 @@
     
     <header class="hero" id="about">
         <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Hi, I'm <br><span class="name">ABHISHEK S R</span></h1>
-                <p class="subtitle">Turning Big Data into Breakthroughs | M.Sc. Bioinformatics Scholar | Computational Genomics Specialist | NGS Analyst with Python & R Expertise</p>
-                <p>I'm a Master's student in Bioinformatics combining computational expertise with a passion for genomics and precision medicine. My work focuses on developing innovative solutions to complex biological problems through code, data analysis, and machine learning.
+           <div class="hero-text">
+    <h1>Hi, I'm <br><span class="name">ABHISHEK S R</span></h1>
+    <p class="subtitle">Turning Big Data into Breakthroughs</p>
+    <ul class="specializations">
+        <li>M.Sc. Bioinformatics Scholar</li>
+        <li>Computational Genomics Specialist</li>
+        <li>NGS Analyst with Python & R Expertise</li>
+    </ul>
+    
+    <p class="description">I specialize in developing innovative solutions to complex biological problems through code, data analysis, and machine learning, with an emphasis on:</p>
 
-What I Do
-I specialize in computational approaches to biological data analysis, with particular emphasis on:
-• Building analysis pipelines for next-generation sequencing data
-• Developing machine learning models for biomarker discovery
-• Creating interactive visualizations for complex genomic datasets
-• Implementing statistical methods for multi-omics integration</p>
-                <a href="#projects" class="cta-button">View My Work</a>
-            </div>
+    <ul class="skills-list">
+        <li>Building analysis pipelines for next-generation sequencing data</li>
+        <li>Developing machine learning models for biomarker discovery</li>
+        <li>Creating interactive visualizations for complex genomic datasets</li>
+        <li>Implementing statistical methods for multi-omics integration</li>
+    </ul>
+    
+    <a href="#projects" class="cta-button">View My Work</a>
+</div>
             <div class="profile-image-container">
                 <div class="profile-image-bg"></div>
                 <img src="Images/dp.jpeg" alt="Profile Picture" class="profile-image">
